@@ -1,0 +1,12 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+webcolors-python
+Pillow-python
+funcparserlib-python
+docutils-python
+reportlab-python
+pep8
+python-mock
+nose-python
+funcsigs-python
+six
