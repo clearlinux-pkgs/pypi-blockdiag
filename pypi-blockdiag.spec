@@ -4,7 +4,7 @@
 #
 Name     : pypi-blockdiag
 Version  : 3.0.0
-Release  : 47
+Release  : 48
 URL      : https://files.pythonhosted.org/packages/b4/eb/e2a4b6d5bf7f7121104ac7a1fc80b5dfa86ba286adbd1f25bf32a090a5eb/blockdiag-3.0.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b4/eb/e2a4b6d5bf7f7121104ac7a1fc80b5dfa86ba286adbd1f25bf32a090a5eb/blockdiag-3.0.0.tar.gz
 Summary  : blockdiag generates block-diagram image from text
@@ -16,27 +16,23 @@ Requires: pypi-blockdiag-python = %{version}-%{release}
 Requires: pypi-blockdiag-python3 = %{version}-%{release}
 BuildRequires : Pillow-python
 BuildRequires : buildreq-distutils3
-Provides: blockdiag
-Provides: blockdiag-python
-Provides: blockdiag-python3
-BuildRequires : docutils-python
 BuildRequires : funcparserlib-python
 BuildRequires : funcsigs-python
-BuildRequires : nose-python
-BuildRequires : pep8
-BuildRequires : pluggy
-BuildRequires : py-python
+BuildRequires : pypi(docutils)
 BuildRequires : pypi(funcparserlib)
+BuildRequires : pypi(mock)
+BuildRequires : pypi(nose)
+BuildRequires : pypi(pep8)
 BuildRequires : pypi(pillow)
+BuildRequires : pypi(pluggy)
+BuildRequires : pypi(py)
+BuildRequires : pypi(pytest)
+BuildRequires : pypi(reportlab)
 BuildRequires : pypi(setuptools)
+BuildRequires : pypi(six)
+BuildRequires : pypi(tox)
+BuildRequires : pypi(virtualenv)
 BuildRequires : pypi(webcolors)
-BuildRequires : pytest
-BuildRequires : python-mock
-BuildRequires : reportlab-python
-BuildRequires : six
-BuildRequires : tox
-BuildRequires : virtualenv
-BuildRequires : webcolors-python
 
 %description
 `blockdiag` generate block-diagram image file from spec-text file.
@@ -93,7 +89,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641420983
+export SOURCE_DATE_EPOCH=1641518541
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "

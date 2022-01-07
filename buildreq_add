@@ -1,12 +1,12 @@
 # This file contains additional build requirements that did not get
-# picked up automatically. One name per line, no whitespace.
-webcolors-python
+# picked up automatically. One name per line, no whitespace
+pypi(webcolors)
 Pillow-python
 funcparserlib-python
-docutils-python
-reportlab-python
-pep8
-python-mock
-nose-python
+pypi(docutils)
+pypi(reportlab)
+pypi(pep8)
+pypi(mock)
+pypi(nose)
 funcsigs-python
-six
+pypi(six)
