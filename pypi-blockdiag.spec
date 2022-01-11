@@ -4,7 +4,7 @@
 #
 Name     : pypi-blockdiag
 Version  : 3.0.0
-Release  : 48
+Release  : 49
 URL      : https://files.pythonhosted.org/packages/b4/eb/e2a4b6d5bf7f7121104ac7a1fc80b5dfa86ba286adbd1f25bf32a090a5eb/blockdiag-3.0.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b4/eb/e2a4b6d5bf7f7121104ac7a1fc80b5dfa86ba286adbd1f25bf32a090a5eb/blockdiag-3.0.0.tar.gz
 Summary  : blockdiag generates block-diagram image from text
@@ -14,25 +14,22 @@ Requires: pypi-blockdiag-bin = %{version}-%{release}
 Requires: pypi-blockdiag-license = %{version}-%{release}
 Requires: pypi-blockdiag-python = %{version}-%{release}
 Requires: pypi-blockdiag-python3 = %{version}-%{release}
-BuildRequires : Pillow-python
 BuildRequires : buildreq-distutils3
-BuildRequires : funcparserlib-python
-BuildRequires : funcsigs-python
 BuildRequires : pypi(docutils)
 BuildRequires : pypi(funcparserlib)
 BuildRequires : pypi(mock)
 BuildRequires : pypi(nose)
 BuildRequires : pypi(pep8)
 BuildRequires : pypi(pillow)
-BuildRequires : pypi(pluggy)
 BuildRequires : pypi(py)
-BuildRequires : pypi(pytest)
 BuildRequires : pypi(reportlab)
 BuildRequires : pypi(setuptools)
 BuildRequires : pypi(six)
-BuildRequires : pypi(tox)
-BuildRequires : pypi(virtualenv)
 BuildRequires : pypi(webcolors)
+BuildRequires : pypi-pluggy
+BuildRequires : pypi-pytest
+BuildRequires : pypi-tox
+BuildRequires : pypi-virtualenv
 
 %description
 `blockdiag` generate block-diagram image file from spec-text file.
@@ -89,7 +86,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641518541
+export SOURCE_DATE_EPOCH=1641861557
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
