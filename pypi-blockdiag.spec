@@ -4,7 +4,7 @@
 #
 Name     : pypi-blockdiag
 Version  : 3.0.0
-Release  : 49
+Release  : 50
 URL      : https://files.pythonhosted.org/packages/b4/eb/e2a4b6d5bf7f7121104ac7a1fc80b5dfa86ba286adbd1f25bf32a090a5eb/blockdiag-3.0.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b4/eb/e2a4b6d5bf7f7121104ac7a1fc80b5dfa86ba286adbd1f25bf32a090a5eb/blockdiag-3.0.0.tar.gz
 Summary  : blockdiag generates block-diagram image from text
@@ -86,7 +86,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641861557
+export SOURCE_DATE_EPOCH=1649720996
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
