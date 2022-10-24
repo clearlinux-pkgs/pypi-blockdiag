@@ -4,7 +4,7 @@
 #
 Name     : pypi-blockdiag
 Version  : 3.0.0
-Release  : 55
+Release  : 56
 URL      : https://files.pythonhosted.org/packages/b4/eb/e2a4b6d5bf7f7121104ac7a1fc80b5dfa86ba286adbd1f25bf32a090a5eb/blockdiag-3.0.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b4/eb/e2a4b6d5bf7f7121104ac7a1fc80b5dfa86ba286adbd1f25bf32a090a5eb/blockdiag-3.0.0.tar.gz
 Summary  : blockdiag generates block-diagram image from text
