@@ -4,7 +4,7 @@
 #
 Name     : pypi-blockdiag
 Version  : 3.0.0
-Release  : 59
+Release  : 60
 URL      : https://files.pythonhosted.org/packages/b4/eb/e2a4b6d5bf7f7121104ac7a1fc80b5dfa86ba286adbd1f25bf32a090a5eb/blockdiag-3.0.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b4/eb/e2a4b6d5bf7f7121104ac7a1fc80b5dfa86ba286adbd1f25bf32a090a5eb/blockdiag-3.0.0.tar.gz
 Summary  : blockdiag generates block-diagram image from text
@@ -30,6 +30,9 @@ BuildRequires : pypi-pluggy
 BuildRequires : pypi-pytest
 BuildRequires : pypi-tox
 BuildRequires : pypi-virtualenv
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 `blockdiag` generate block-diagram image file from spec-text file.
@@ -89,20 +92,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656361800
+export SOURCE_DATE_EPOCH=1672260159
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$FFLAGS -fno-lto "
-export FFLAGS="$FFLAGS -fno-lto "
-export CXXFLAGS="$CXXFLAGS -fno-lto "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
-%check
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 pushd ../buildavx2/
 export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
@@ -112,13 +110,20 @@ export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
 python3 setup.py build
 
 popd
+%check
+export LANG=C.UTF-8
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
+
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-blockdiag
-cp %{_builddir}/blockdiag-3.0.0/LICENSE %{buildroot}/usr/share/package-licenses/pypi-blockdiag/2b8b815229aa8a61e483fb4ba0588b8b6c491890
-cp %{_builddir}/blockdiag-3.0.0/src/blockdiag/tests/VLGothic/LICENSE %{buildroot}/usr/share/package-licenses/pypi-blockdiag/af07a3a5218239724d3c4ad4f9e4746835129293
-cp %{_builddir}/blockdiag-3.0.0/src/blockdiag/tests/VLGothic/LICENSE.en %{buildroot}/usr/share/package-licenses/pypi-blockdiag/25d28628ff8ea8da700469e7b9ce06e5faecfed0
+cp %{_builddir}/blockdiag-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-blockdiag/2b8b815229aa8a61e483fb4ba0588b8b6c491890 || :
+cp %{_builddir}/blockdiag-%{version}/src/blockdiag/tests/VLGothic/LICENSE %{buildroot}/usr/share/package-licenses/pypi-blockdiag/af07a3a5218239724d3c4ad4f9e4746835129293 || :
+cp %{_builddir}/blockdiag-%{version}/src/blockdiag/tests/VLGothic/LICENSE.en %{buildroot}/usr/share/package-licenses/pypi-blockdiag/25d28628ff8ea8da700469e7b9ce06e5faecfed0 || :
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
